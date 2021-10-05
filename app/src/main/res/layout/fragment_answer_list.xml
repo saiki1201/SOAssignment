@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_bg_color">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".fragment.QuestionListFragment">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/dp_16" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="@dimen/dp_16" />
+
+            <TextView
+                android:id="@+id/tvQuestion"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:text="@{answerListViewModel.title}"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/heading_text_size"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="API Call Problems on Mate 10" />
+
+            <TextView
+                android:id="@+id/tvQuestionBody"
+                android:layout_width="@dimen/dp_zero"
+                android:layout_height="wrap_content"
+                android:text="@{answerListViewModel.body}"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/tvQuestion"
+                tools:text="API Call Problems on Mate 10" />
+
+            <View
+                android:id="@+id/vwDivider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_1"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@color/divider_color"
+                app:layout_constraintTop_toBottomOf="@id/tvQuestionBody" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAnswers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/text_color"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/guidelineEnd"
+                app:layout_constraintStart_toEndOf="@id/guidelineStart"
+                app:layout_constraintTop_toBottomOf="@id/vwDivider" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <data>
+
+        <variable
+            name="answerListViewModel"
+            type="com.example.soassignment.viewmodel.AnswerListViewModel" />
+
+    </data>
+
+</layout>
